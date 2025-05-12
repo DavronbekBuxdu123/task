@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { MdDelete } from "react-icons/md";
 import React, { useState } from "react";
