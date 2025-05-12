@@ -8,15 +8,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
-
-export type Task = {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  completed: boolean;
-  important: boolean;
-};
+import { Task } from "@prisma/client";
 
 type TasksProps = {
   data: Task[];
@@ -75,9 +67,9 @@ export default function Tasks({ data }: TasksProps) {
     setSelectedTaskId(task.id);
     setIsOpen(true);
     setCompleted(task.completed);
-    setDescription(task.description);
+    setDescription(task.description!);
     setTitle(task.title);
-    setDate(task.date);
+    setDate(task.date.toString());
     setImportant(task.important);
   };
 
@@ -103,7 +95,7 @@ export default function Tasks({ data }: TasksProps) {
     if (filter === "all") return true;
     if (filter === "completed") return task.completed;
     if (filter === "important") return task.important;
-    if (filter === "today") return isToday(task.date);
+    if (filter === "today") return isToday(task.date.toString());
     return false;
   });
 
@@ -206,7 +198,7 @@ export default function Tasks({ data }: TasksProps) {
               <h4 className="text-lg font-semibold">{task.title}</h4>
               <p className="text-sm mt-2">{task.description}</p>
               <p className="text-xs mt-1 text-gray-300 absolute bottom-15">
-                {formatDate(task.date)}
+                {formatDate(task.date.toString())}
               </p>
               <div className="">
                 <div className="flex items-center justify-between mt-4  ">
