@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { IoIosMenu } from "react-icons/io";
 import { CiCalendarDate } from "react-icons/ci";
 
-type Task = {
+export type Task = {
   id: number;
   title: string;
   description: string;
