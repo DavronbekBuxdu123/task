@@ -26,6 +26,8 @@ export default function Tasks({ data }: TasksProps) {
   const [important, setImportant] = useState<boolean>(false);
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
 
+  console.log(data);
+
   const router = useRouter();
 
   const createTask = async () => {
