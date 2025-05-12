@@ -14,7 +14,7 @@ export async function PUT(
     });
     return NextResponse.json(updatedUser);
   } catch (error) {
-    return NextResponse.json("Internal Server Error", { status: 400 });
+    return NextResponse.json(error, { status: 400 });
   }
 }
 
@@ -30,6 +30,6 @@ export async function DELETE(
     });
     return NextResponse.json({ message: "deleted" });
   } catch (error) {
-    return NextResponse.json("Internal Server Error", { status: 400 });
+    return NextResponse.json(error, { status: 400 });
   }
 }
