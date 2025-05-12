@@ -5,6 +5,8 @@ import { Task } from "@prisma/client";
 
 const Page = async () => {
   const tasks: Task[] = await prisma.task.findMany();
+  console.log(tasks);
+
   return (
     <div>
       <Tasks data={tasks} />
